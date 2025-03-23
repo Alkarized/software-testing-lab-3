@@ -70,6 +70,11 @@ jobs:
         uses: actions/deploy-pages@v4.0.5
         with:
           artifact_name: gradle-build-results
+      - name: Get GitHub Pages URL
+        run: |
+          echo "Allure Report URL: ${{ steps.allure-deploy.outputs.page_url }}"
+          echo "Jacoco Results URL: ${{ steps.jacoco-deploy.outputs.page_url }}"
+          echo "Gradle Build Results URL: ${{ steps.gradle-deploy.outputs.page_url }}"
   notify:
     needs: [build, dependency-submission]
     runs-on: ubuntu-latest
