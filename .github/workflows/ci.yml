@@ -48,6 +48,22 @@ jobs:
         distribution: 'temurin'
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@v4
+  upload-artifacts:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy allure report Pages
+        uses: actions/deploy-pages@v4.0.5
+        with:
+          artifact_name: allure-report
+      - name: Deploy jacoco results Pages
+        uses: actions/deploy-pages@v4.0.5
+        with:
+          artifact_name: jacoco-results
+      - name: Deploy gradle result Pages
+        uses: actions/deploy-pages@v4.0.5
+        with:
+          artifact_name: gradle-build-results
   notify:
     needs: [build, dependency-submission]
     runs-on: ubuntu-latest
