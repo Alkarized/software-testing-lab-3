@@ -22,17 +22,17 @@ jobs:
       run: ./gradlew build 
       continue-on-error: true
     - name: upload gradle build results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         name: gradle-build-results
         path: build/reports/tests/test
     - name: upload jacoco results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         name: jacoco-results
         path: build/reports/jacoco/test
     - name: upload allure report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-pages-artifact@v3.0.1
       with:
         name: allure-report
         path: build/reports/allure-report/allureReport
