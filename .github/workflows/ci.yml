@@ -72,11 +72,11 @@ jobs:
           artifact_name: gradle-build-results
       - name: Get GitHub Pages URL
         run: |
-          echo "Allure Report URL: ${{ steps.allure-deploy.outputs.page_url }}"
-          echo "Jacoco Results URL: ${{ steps.jacoco-deploy.outputs.page_url }}"
+          echo "Allure Report URL: ${{ steps.deployment.outputs.page_url }}"
+          echo "Jacoco Results URL: ${{ github-pages }}"
           echo "Gradle Build Results URL: ${{ steps.gradle-deploy.outputs.page_url }}"
   notify:
-    needs: [build, dependency-submission]
+    needs: [build, upload-artifacts]
     runs-on: ubuntu-latest
     steps:
     - name: notify telegramm data
