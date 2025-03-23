@@ -54,6 +54,9 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy allure report Pages
         uses: actions/deploy-pages@v4.0.5
