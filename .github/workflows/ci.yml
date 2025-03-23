@@ -31,6 +31,11 @@ jobs:
       with:
         name: jacoco-results
         path: build/reports/jacoco/test
+    - name: upload allure report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: build\reports\allure-report\allureReport
   dependency-submission:
     needs: build
     runs-on: ubuntu-latest
