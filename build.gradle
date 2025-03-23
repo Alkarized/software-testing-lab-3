@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 group = 'org.usvm'
@@ -27,4 +28,14 @@ test {
     jvmArgs = [
             "-javaagent:${classpath.find { it.name.contains("mockito-core") }.absolutePath}"
     ]
+    ignoreFailures = true
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = false
+        csv.required = false
+    }
 }

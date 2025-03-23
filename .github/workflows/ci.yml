@@ -26,6 +26,11 @@ jobs:
       with:
         name: gradle-build-results
         path: build/reports/tests/test
+    - name: upload jacoco results
+      uses: actions/upload-artifact@v4
+      with:
+        name: gradle-build-results
+        path: build/reports/jacoco/test
   dependency-submission:
     needs: build
     runs-on: ubuntu-latest
