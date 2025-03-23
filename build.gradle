@@ -29,7 +29,8 @@ test {
             "-javaagent:${classpath.find { it.name.contains("mockito-core") }.absolutePath}"
     ]
     ignoreFailures = true
-    finalizedBy jacocoTestReport
+    jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
 }
 
 jacocoTestReport {
@@ -37,5 +38,16 @@ jacocoTestReport {
     reports {
         xml.required = false
         csv.required = false
+    }
+}
+
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.90
+            }
+        }
     }
 }
