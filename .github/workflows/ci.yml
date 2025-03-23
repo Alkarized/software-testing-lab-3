@@ -21,7 +21,8 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build 
       continue-on-error: true
-    - uses: actions/upload-artifact@v4
+    - name: upload gradle build results
+      uses: actions/upload-artifact@v4
       with:
         name: gradle-build-results
         path: build/reports/tests/test/index.html
